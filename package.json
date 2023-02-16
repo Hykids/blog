@@ -1,0 +1,22 @@
+{
+  "name": "island_dome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "island dev docs",
+    "build": "island build docs",
+    "preview": "island start docs",
+    "dep": "sh deploy.sh"
+  },
+  "keywords": [],
+  "presets": [
+    "@babel/preset-react"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-react": "^7.18.6",
+    "islandjs": "^0.7.15"
+  }
+}
