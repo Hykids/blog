@@ -84,7 +84,7 @@ test('components/index', () => {
 `,t(n.h3,{id:"\u8FD0\u884C\u6D4B\u8BD5",children:[e(n.a,{className:"header-anchor","aria-hidden":"true",href:"#\u8FD0\u884C\u6D4B\u8BD5",children:"#"}),"\u8FD0\u884C\u6D4B\u8BD5"]}),`
 `,e(n.p,{children:"\u4F7F\u7528npm run test"}),`
 `,t(n.p,{children:[`###\u53C2\u8003\u94FE\u63A5
-`,e(n.a,{href:"https://www.jianshu.com/p/ae652d0b8fc5",target:"_blank",rel:"nofollow",children:"\u4F7F\u7528Jest\u6D4B\u8BD5JavaScript"})]})]})}function d(r={}){const{wrapper:n}=r.components||{};return n?e(n,Object.assign({},r,{children:e(c,r)})):c(r)}const l="Invalid Date",h=`---
+`,e(n.a,{href:"https://www.jianshu.com/p/ae652d0b8fc5",target:"_blank",rel:"nofollow",children:"\u4F7F\u7528Jest\u6D4B\u8BD5JavaScript"})]})]})}function d(r={}){const{wrapper:n}=r.components||{};return n?e(n,Object.assign({},r,{children:e(c,r)})):c(r)}const l="2023/2/16 15:25:47",h=`---
 layout: blog
 title: \u5C0F\u7A0B\u5E8F\u5B66\u4E60\u8BB0\u5F55\u2014\u2014\u5355\u5143\u6D4B\u8BD5
 date: 2022-08-09T11:01:43.081Z

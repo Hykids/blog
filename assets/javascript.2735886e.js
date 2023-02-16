@@ -66,7 +66,7 @@ alert(Uint32Array.BYTES_PER_ELEMENT); // \u6BCF\u4E2A\u6574\u6570 4 \u4E2A\u5B57
 
 alert(view.length); // 4\uFF0C\u5B83\u5B58\u50A8\u4E86 4 \u4E2A\u6574\u6570
 alert(view.byteLength); // 16\uFF0C\u5B57\u8282\u4E2D\u7684\u5927\u5C0F
-`})})]})}function i(a={}){const{wrapper:e}=a.components||{};return e?n(e,Object.assign({},a,{children:n(d,a)})):d(a)}const h="2023/2/15 22:59:29",b=`---
+`})})]})}function i(a={}){const{wrapper:e}=a.components||{};return e?n(e,Object.assign({},a,{children:n(d,a)})):d(a)}const h="2023/2/16 15:25:47",b=`---
 layout: blog
 title: JavaScript\u6587\u4EF6\u6D41
 date: 2022-08-04T06:54:23.816Z

@@ -4,7 +4,7 @@ import{jsx as e,jsxs as r,Fragment as a}from"react/jsx-runtime";const h=void 0,s
 `,e(t.p,{children:e(t.a,{href:"https://visiky.github.io/resume/?mode=edit&template=template3&user=Hykids",target:"_blank",rel:"nofollow",children:"\u8BE6\u8BF7\u6233\u6211"})}),`
 `,r(t.h3,{id:"\u9879\u76EE\u4ECB\u7ECD",children:[e(t.a,{className:"header-anchor","aria-hidden":"true",href:"#\u9879\u76EE\u4ECB\u7ECD",children:"#"}),"\u9879\u76EE\u4ECB\u7ECD"]}),`
 `,e(t.hr,{}),`
-`,e(t.p,{children:"\u5F85\u5B8C\u5584"})]})}function c(n={}){const{wrapper:t}=n.components||{};return t?e(t,Object.assign({},n,{children:e(i,n)})):i(n)}const o="2023/2/16 13:34:30",l=`## Getting Started\r
+`,e(t.p,{children:"\u5F85\u5B8C\u5584"})]})}function c(n={}){const{wrapper:t}=n.components||{};return t?e(t,Object.assign({},n,{children:e(i,n)})):i(n)}const o="2023/2/16 15:25:47",l=`## Getting Started\r
 \r
 ---\r
 \r
