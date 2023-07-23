@@ -3,6 +3,7 @@ import { defaultSidebar } from './defaultSidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base:"/blog/",
   title: "Blog",
   description: "Discovery and Documentation",
   themeConfig: {
