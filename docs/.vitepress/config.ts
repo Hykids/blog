@@ -7,26 +7,24 @@ export default defineConfig({
   title: "Blog",
   description: "Discovery and Documentation",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    head:[
+      ["link",{rel:'icon',href:'/favicon.ico'}]
+    ],
     nav: [
       { text: 'Home', link: '/' },
       // 
       ...defaultSidebar.slice(1,4)
     ],
 
-    sidebar: 
-      // {
-      //   text: 'Examples',
-      //   items: [
-      //     { text: 'Markdown Examples', link: '/markdown-examples' },
-      //     { text: 'Runtime API Examples', link: '/api-examples' }
-      //   ]
-      // }
-      defaultSidebar
-    ,
+    sidebar: defaultSidebar,
     footer:{
       copyright:"Copyright © 2023-present hykids"
     },
+    editLink: {
+      pattern: "https://github.com/Hykids/blog",
+      text: "Edit this page on Gitlab",
+    },
+    lastUpdatedText: "Last Updated",
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Hykids' }
     ]

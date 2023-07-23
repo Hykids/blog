@@ -30,7 +30,11 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
             link:"/java/代码块"
         },
         {
-            text:"MySQ学习",
+          text:"设计模式",
+          link:"/java/设计模式"
+      },
+        {
+            text:"MySQL学习",
             link:"/java/MySQL"
         }
     ]
@@ -38,12 +42,6 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
     
   }
 
-
-
-
- 
-
- 
 
   
 ];

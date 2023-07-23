@@ -7,5 +7,9 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "dep": "sh deploy.sh"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }
