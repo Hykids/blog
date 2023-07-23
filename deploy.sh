@@ -4,10 +4,10 @@
 set -e
 
 # build
-npm run build
+npm run docs:build
 
 # navigate into the build output directory
-cd docs/.island/dist
+cd docs/.vitepress/dist
 
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
@@ -21,4 +21,5 @@ git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 git push -f https://github.com/Hykids/blog.git master
+
 cd -
