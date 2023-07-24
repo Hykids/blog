@@ -5,11 +5,11 @@ import { defaultSidebar } from './defaultSidebar'
 export default defineConfig({
   base:"/blog/",
   title: "Blog",
+  logo: '/Kit.jpg',
+  siteTitle: 'My Blog',
   description: "Discovery and Documentation",
   themeConfig: {
-    head:[
-      ["link",{rel:'icon',href:'/favicon.ico'}]
-    ],
+   
     nav: [
       { text: 'Home', link: '/' },
       // 
@@ -24,7 +24,9 @@ export default defineConfig({
       pattern: "https://github.com/Hykids/blog",
       text: "Edit this page on Gitlab",
     },
-    lastUpdatedText: "Last Updated",
+    lastUpdated: {
+      text:"上次更新"
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Hykids' }
     ]

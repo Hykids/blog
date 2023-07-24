@@ -4,11 +4,25 @@
 
 ---
 
-刚毕业社畜一枚呀
+<script setup>
+import { VPTeamMembers } from 'vitepress/theme'
+const members = [
+  {
+    avatar: '/Kit.jpg',
+    name: 'Aldur',
+    title: '热爱绘画的菜狗coder一枚吖',
+    links: [
+      { icon: 'github', link: 'https://github.com/Hykids' },
+    //   { icon: 'twitter', link: 'https://twitter.com/youyuxi' }
+    ]
+  },
+]
+</script>
 
-在互联网大厂有过一段搬砖实习经历，目前前端转岗后端中
+<VPTeamMembers size="small" :members="members" />
+学习，然后写写笔记:writing_hand:
 
-随便写写笔记
+
 
 <!-- [详请戳我](https://visiky.github.io/resume/?mode=edit&template=template3&user=Hykids) -->
 
@@ -19,5 +33,3 @@
 待完善
 
 ---
-
--所谓日记，其实就是我的长篇遗书

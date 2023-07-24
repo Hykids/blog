@@ -6,7 +6,7 @@ import { DefaultTheme } from "vitepress";
 export const defaultSidebar: DefaultTheme.Sidebar = [
   {
     text: "Introduction",
-    collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "Getting Started",
@@ -15,7 +15,8 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
     ],
   },
   {
-    text:"Java学习笔记",
+    text:"JavaSE",
+    collapsed: true,
     items:[
         {
             text:"Java OOP",
@@ -26,7 +27,7 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
             link:"/java/==&equals"
         },
         {
-            text:"代码块",
+            text:"Java基础",
             link:"/java/代码块"
         },
         {
@@ -39,8 +40,38 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
         }
     ]
     
-    
-  }
+  },
+  {
+    text:"框架",
+    collapsed: true,
+    items:[
+      {
+        text:"Vue",
+        link:"/frameworks/vue"
+      },{
+        text:"React Hook",
+        link:"/frameworks/react-hook"
+      }
+    ]
+  },
+  {
+    text:"其他",
+    collapsed: true,
+    items:[
+      {
+        text:"资源整理",
+        link:"/others/资源整理"
+      },{
+        text:"Latex学习",
+        link:"/others/Latex学习日志"
+      },
+      {
+        text:"PEGA学习",
+        link:"/others/PEGA"
+      },
+    ]
+  },
+
 
 
   
