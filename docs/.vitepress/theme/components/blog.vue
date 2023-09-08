@@ -1,6 +1,26 @@
 // .vitepress/components/home.vue
 <script setup>
-const list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+import { onMounted } from 'vue'
+// import { MlHeatmap } from 'ml-heatmap'
+// import lcData from './lcData.json'
+// import moment from 'moment'
+import { useData } from 'vitepress';
+// import type { Theme } from 'vitepress';
+
+const { Theme } = useData
+const config = resolveConfig(Theme.value)
+
+console.log(config,'config')
+
+function resolveConfig(config ) {
+  return {
+    ...config,
+    blog: {
+      ...config?.blog,
+      pagesData: config?.blog?.pagesData || []
+    }
+  }
+}
 </script>
 <template>
   <div class="home-wrapper">
@@ -24,4 +44,4 @@ const list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.5s;
 }
-</style>
+</style>    dn 

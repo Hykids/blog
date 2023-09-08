@@ -6,9 +6,9 @@ import { onMounted } from "vue"
 
 const { Layout } = DefaultTheme
 
-const { frontmatter  } = useData() //这里的frontmatter就是各个md文件中自己写在最上面的东西
+const { frontmatter,theme  } = useData() //这里的frontmatter就是各个md文件中自己写在最上面的东西
 
-console.log(frontmatter.author,"frontmatter")
+ 
 
 onMounted(()=>{
     if (typeof window !== undefined) {
@@ -35,10 +35,9 @@ onMounted(()=>{
 <template>
   <Layout>
     <template #doc-before>
-      <span class="page-info">✍️{{ frontmatter.author }}</span>
+      <div class="page-info" i-ph-tag-duotone></div>
       <!-- <span class="page-info">🕐{{ frontmatter.date }}</span> -->
-      <span>
-        🔗
+      <span i-ph-tag-duotone>
         <span class="page-info" v-for="item in frontmatter.tags" :key="item">{{ item }}</span>
       </span>
     </template>

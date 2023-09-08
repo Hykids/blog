@@ -18,18 +18,30 @@ const members = [
   },
 ]
 </script>
-
 <VPTeamMembers size="small" :members="members" />
-学习，然后写写笔记:writing_hand:
+根据费曼学习法，学习某项知识或者技术时，向他人复述所学知识是检验掌握情况的良好办法
 
+本博客基于此目的建立，记录我狗屁不通的学习总结，和踩坑记录
 
+要是你不幸点进了此博客，如果正经学习还请移步权威教程，以免被我的二流表述和三流技术创到
 
-<!-- [详请戳我](https://visiky.github.io/resume/?mode=edit&template=template3&user=Hykids) -->
+✌
 
-### 项目介绍
+## 项目介绍
 
----
+### 扫雷
 
-待完善
+跟着Anth大佬敲的，学到了很多
+
+:bomb:[开始游戏](https://celadon-peony-ce8b62.netlify.app/):bomb:
+
+目前还是半成品
+
+TODO
+
+- [x] resert添加
+- [ ] 游戏状态添加
+- [ ] 胜利与失败动画
+- [ ] 游戏难度切换
 
 ---

@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Blog"
+  name: "Only Up☝️"
   text: "菜狗历险寄"
   tagline: 给自己喂养无望，你的黑暗就永无止境
   image: ./Kit.jpg

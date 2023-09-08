@@ -4,12 +4,15 @@ import { defaultSidebar } from './defaultSidebar'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base:"/blog/",
-  title: "Blog",
-  logo: '/Kit.jpg',
-  siteTitle: 'My Blog',
+  title: '✨Blog',
+  logo: '/logo.svg',
   description: "Discovery and Documentation",
   themeConfig: {
-   
+    head:[
+      ["link", {  rel: 'alternate icon',
+      href: '/favicon.ico',
+       }],
+   ],
     nav: [
       { text: 'Home', link: '/' },
       // 

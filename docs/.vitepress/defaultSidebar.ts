@@ -28,7 +28,7 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
         },
         {
             text:"Java基础",
-            link:"/java/代码块"
+            link:"/java/java基础"
         },
         {
           text:"设计模式",
@@ -40,6 +40,16 @@ export const defaultSidebar: DefaultTheme.Sidebar = [
         }
     ]
     
+  },
+  {
+    text:"算法",
+    collapsed: true,
+    items:[
+      {
+        text:"二分查找",
+        link:"/algorithm/二分查找"
+      }
+    ]
   },
   {
     text:"框架",

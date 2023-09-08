@@ -12,7 +12,7 @@
 
 添加环境变量
 
-![image-20230720133241476](/img/image-20230720133241476.png)
+![image-20230720133241476](./../public/img/image-20230720133241476.png)
 
 添加配置文件 my.ini,使用安装目录。
 
@@ -63,7 +63,7 @@ mysql -u root -p
 
 ### 常见问题
 
-![image-20230720134725385](/img/image-20230720134725385.png)
+![image-20230720134725385](./../public/img/image-20230720134725385.png)
 
 原因：用户名和密码错误，访问失效。
 
@@ -91,7 +91,7 @@ mysqld --defaults-file="D:\Program Files\MySQL\mysql-5.7.43-winx64\my.ini" --ski
 
 成功：
 
-![image-20230720135905490](/img/image-20230720135905490.png)
+![image-20230720135905490](./../public/img/image-20230720135905490.png)
 
 别忘了更新密码(分号不能忘)：
 
@@ -99,12 +99,22 @@ mysqld --defaults-file="D:\Program Files\MySQL\mysql-5.7.43-winx64\my.ini" --ski
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
 ```
 
+## MySQL三层结构
+
+![image-20230726073604315](./../public/img/image-20230726073604315.png)
+
+
+
 ## 基本命令行操作
 
 命令行连接
 
 ```
 mysql -uroot -p123456 -- 链接数据库
+
+推荐：mysql -uroot -p
+回车后输入密码
+
 flush privileges; -- 刷新权限
 ---------------------------------------------------------------
 show databases; -- 查看所有数据库
@@ -119,15 +129,31 @@ create database 数据库名称 -- 新建数据库
 exit -- 推出链接
 ```
 
-## 操作数据库
-
-创建数据库
+## 数据库基本操作
 
 ```
 CREATE DATABASE [IF NOT EXISTS] db -- 可选项
-DROP DATABASE [IF EXISTS] db -- 删除数据库
-use `database` -- 选择数据库
-show database -- 查看所有数据库
 
-select * from `table` --查看表中所有数据
+DROP DATABASE [IF EXISTS] db -- 删除数据库
+
+use `database`； -- 选择/切换数据库
+
+show databases; -- 查看所有数据库
 ```
+
+## 表基本操作
+
+```
+-- 查看
+SHOW TABLES; --展示数据库中的表
+select * from `table`； --查看表中所有数据
+
+-- 创建
+
+```
+
+
+
+## JDBC
+
+ java连接不同厂商的mysql提供的结果，厂商负责接口的具体实现，使用者只需要下载对应厂商的jar包。

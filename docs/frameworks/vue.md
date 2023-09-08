@@ -1,20 +1,40 @@
 # Vue
 
-::: warning ✍️ 基础篇
-OnePage 速通(更新中
+::: warning ✍️ advanced
+OnePage 速通中
 :::
 
-## 生命周期
+## Reactivity in Depth
 
-有关 vue 的生命周期，分为四个阶段：
+Vue reactivity is a feature that automatically updates the UI when the data model changes and vice versa, simplifying the process of building dynamic and interactive user interfaces. Today, I am going to figure it out and try to complete its main function.
 
-- **Creation**阶段：组件被创建，首先调用 setup 钩子函数，其中设置了响应式数据初始化和逻辑设置。接着 beforeCreate 被触发，此时组件实例已经创建。在组件挂在在 DOM 之前，还会触发 beforeMount，此时模板的编译已经完成。
-- **onMount**阶段：组件挂在到 Dom 上之后，Mounted 钩子触发。此时，已经可以和 DOM 交互。
+```js
+let price = 3
+let quantity = 4
+let total = price * quantity
 
-![image-20230724183601373](/img/image-20230724183601373.png)
+console.log('total:',total)//12
 
-## Vue 组件
+qunality = 5
 
-## 表单组件
+console.log('total:',total)//12
+```
 
-## diff 渲染机制
+This is not how Javascript usually work .So Vue somehow knows to go and update the template and computer property which updates the template. How can we save the date calculation so we can run it again,when price or quantity updates?
+
+In javasricpt, we can set total calculation in an anonymous function,and  store inside of effect.
+
+```javascript
+let effect = function(){
+	total = price * quantity
+    // the code we want to save it
+}
+```
+
+​	Not the same as React, Vue is based on Object.defineProperity to achieve data reactivity. Before diving into the study, it is important to understand the Observer Pattern.
+
+The Observer Patten is one of design pattern used to establish one-to-many dependency between object. In this pattern ,when one object change its state,all its dependents are notified and update automatically.
+
+
+
+## 
