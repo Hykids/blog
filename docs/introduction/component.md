@@ -1,55 +1,62 @@
 ---
 description: 默认支持流程图，tabs面板，待办列表，作品页面
+hidden: true
 ---
 
 # 内置第三方插件能力
+
 ## task-checkbox
-* Type: `boolean | TaskCheckbox`
+
+- Type: `boolean | TaskCheckbox`
 
 支持渲染 markdown 任务列表，内置 [markdown-it-task-checkbox](https://github.com/linsir/markdown-it-task-checkbox) 插件提供支持
 
-* [ ] 🥔 TODO
-* [ ] 真不戳
-* [x] 内置任务列表
+- [ ] 🥔 TODO
+- [ ] 真不戳
+- [x] 内置任务列表
 
 语法如下
+
 ```md
-* [ ] 🥔 TODO
-* [ ] 真不戳
-* [x] 内置任务列表
+- [ ] 🥔 TODO
+- [ ] 真不戳
+- [x] 内置任务列表
 ```
 
 默认开启，你可以进一步配置
 
 :::code-group
+
 ```ts [① 关闭]
 const blogTheme = getThemeConfig({
   taskCheckbox: false
-})
+});
 ```
+
 ```ts [② 进一步配置]
 const blogTheme = getThemeConfig({
   taskCheckbox: {
     // refer https://github.com/linsir/markdown-it-task-checkbox for options
   }
-})
+});
 ```
+
 ```ts [③ type]
 interface TaskCheckbox {
-  disabled?: boolean
-  divWrap?: boolean
-  divClass?: string
-  idPrefix?: string
-  ulClass?: string
-  liClass?: string
+  disabled?: boolean;
+  divWrap?: boolean;
+  divClass?: string;
+  idPrefix?: string;
+  ulClass?: string;
+  liClass?: string;
 }
 ```
+
 :::
 
-
-
 ## tabs
-* Type: `boolean`
+
+- Type: `boolean`
 
 支持局部的`tabs`面板，**默认开启**
 
@@ -114,7 +121,6 @@ b content 2
 :::
 ```
 
-
 :::=tabs=ab
 ::a
 a content
@@ -137,13 +143,14 @@ b content 2
 // .vitepress/blog-theme.ts
 const blogTheme = getThemeConfig({
   tabs: false
-})
+});
 ```
 
 ## Mermaid - 图表
-* Type: `boolean`|`object`
 
->通过解析类 Markdown 的文本语法来实现图表的创建和动态修改。
+- Type: `boolean`|`object`
+
+> 通过解析类 Markdown 的文本语法来实现图表的创建和动态修改。
 
 :::tip 一点说明
 基于 [vitepress-plugin-mermaid](https://github.com/emersonbottero/vitepress-plugin-mermaid) 实现
@@ -158,7 +165,6 @@ flowchart TD
 ```
 </pre>
 
-
 效果如下
 
 ```mermaid
@@ -169,23 +175,27 @@ flowchart TD
 **默认开启**，可以通过`mermaid`进行进一步配置，或关闭
 
 :::code-group
+
 ```ts [① 关闭]
 const blogTheme = getThemeConfig({
   mermaid: false
-})
+});
 ```
+
 ```ts [② 进一步配置]
 const blogTheme = getThemeConfig({
   mermaid: {
     // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
   }
-})
+});
 ```
+
 :::
 
 下面看一下官方其它案例
 
 **时序图**
+
 ```mermaid
 sequenceDiagram
 Alice->>John: Hello John, how are you?
@@ -199,6 +209,7 @@ Bob-->>John: Jolly good!
 ```
 
 **甘特图**
+
 ```mermaid
 gantt
     section Section
@@ -211,7 +222,8 @@ gantt
 ```
 
 ## UserWorksPage
-* Type: `UserWorks`
+
+- Type: `UserWorks`
 
 用于作品列表展示
 
@@ -220,15 +232,16 @@ gantt
 ![](https://img.cdn.sugarat.top/mdImg/MTY4NzA4ODczMzkwNg==687088733906)
 
 新建一个`works.md`文件，放入以下内容
-  
+
 ```md
 ---
 layout: page
 title: 个人作品展示
 sidebar: false
-outline: [2,3]
+outline: [2, 3]
 sticky: 1
 ---
+
 <UserWorksPage />
 ```
 
@@ -259,8 +272,7 @@ const blogTheme = getThemeConfig({
           text: '自定义badge'
         },
         url: 'https://theme.sugarat.top',
-        cover:
-          'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
+        cover: 'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
         tags: ['Vitepress', 'Vue'],
         links: [
           {
@@ -271,52 +283,52 @@ const blogTheme = getThemeConfig({
       }
     ]
   }
-})
+});
 ```
 
 ```ts [type]
 interface UserWorks {
-  title: string
-  description?: string
-  topTitle?: string
-  list: UserWork[]
+  title: string;
+  description?: string;
+  topTitle?: string;
+  list: UserWork[];
 }
 interface UserWork {
-  title: string
-  description: string
+  title: string;
+  description: string;
   time:
-  | string
-  | {
-    start: string
-    end?: string
-    lastupdate?: string
-  }
+    | string
+    | {
+        start: string;
+        end?: string;
+        lastupdate?: string;
+      };
   status?: {
-    text: string
-    type?: 'tip' | 'warning' | 'danger'
-  }
-  url?: string
+    text: string;
+    type?: 'tip' | 'warning' | 'danger';
+  };
+  url?: string;
   github?:
-  | string
-  | {
-    owner: string
-    repo: string
-    branch?: string
-    path?: string
-  }
+    | string
+    | {
+        owner: string;
+        repo: string;
+        branch?: string;
+        path?: string;
+      };
   cover?:
-  | string
-  | string[]
-  | {
-    urls: string[]
-    layout?: 'swiper' | 'list'
-  }
+    | string
+    | string[]
+    | {
+        urls: string[];
+        layout?: 'swiper' | 'list';
+      };
   links?: {
-    title: string
-    url: string
-  }[]
-  tags?: string[]
-  top?: number
+    title: string;
+    url: string;
+  }[];
+  tags?: string[];
+  top?: number;
 }
 ```
 
