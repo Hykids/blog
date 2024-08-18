@@ -45,7 +45,7 @@ export default defineConfig({
     // },
     nav: [
       { text: '首页', link: '/' },
-      { text: 'About me', link: '/About Me' }
+      { text: 'About me', link: '/about' }
     ],
     socialLinks: [
       //   { icon: 'twitter', link: 'https://twitter.com/qingshuihe1' },

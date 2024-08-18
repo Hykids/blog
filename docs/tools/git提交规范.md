@@ -8,7 +8,11 @@ sidebar: false
 
 # git 提交规范
 
-说明提交功能，修改位置。过滤 commit，方便后续查找。ChangeLog 可直接从 commit 生成。
+规范的 git 提交有以下用处：
+
+1. 说明提交功能，修改位置。
+2. 过滤 commit，方便后续查找。
+3. ChangeLog 可直接从 commit 生成。
 
 ## 提交格式
 
@@ -55,7 +59,7 @@ commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact
 
 完成安装后，在项目目录下新建 commitlint.config.js 文件
 
-```
+```JavaScript
 module.exports = {
 	extends: ['@commitlint/config-conventional'],
 	rules: { // type 类型定义
@@ -77,7 +81,7 @@ module.exports = {
 
 Husky 是一个 Git 钩子工具，它允许你在特定的 Git 操作（如 commit、push、merge）前后执行自定义脚本。在 git commit 之前运行 commitlint 来检查提交信息，或在 git push 时运行测试等操作。
 
-```
+```JSON
 // husky
 // 项目目录下安装
 npm i husky --save-dev
@@ -110,7 +114,7 @@ npm install cz-customizable --save-dev
 
 配置
 
-```
+```JSON
 commitizen init cz-customizable --save --save-exact
 
 // 在package.json文件中增加相关配置
@@ -123,7 +127,7 @@ commitizen init cz-customizable --save --save-exact
 
 在项目目录下，新建配置文件 .cz-config.js
 
-```
+```JavaScript
 module.exports = {
   types: [
     {value: 'feat',     name: 'feat:     新功能'},
@@ -166,13 +170,13 @@ Change Log 是发布新版本时，用来说明与上一个版本差异的文档
 [Conventional Changelog](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fconventional-changelog%2Fconventional-changelog%23conventional-changelog 'https://github.com/conventional-changelog/conventional-changelog#conventional-changelog')
 自动生成 Change Log 文件
 
-```
+```npm
 npm i conventional-changelog-cli --save-dev
 ```
 
 在 scripts 添加
 
-```
+```JSON
 "scripts": { "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s" }
 ```
 
