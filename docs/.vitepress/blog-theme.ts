@@ -5,15 +5,15 @@ import { getThemeConfig } from '@sugarat/theme/node';
 import type { Theme } from '@sugarat/theme';
 
 const baseUrl = 'https://hykids.github.io/blog';
-const RSS: Theme.RSSOptions = {
-  //   title: '粥里有勺糖',
-  //   baseUrl,
-  //   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
-  //   description: '你的指尖,拥有改变世界的力量（大前端相关技术分享）',
-  language: 'zh-cn',
-  image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-  favicon: 'https://hykids.github.io/blog/favicon.ico'
-};
+// const RSS: Theme.RSSOptions = {
+//   title: '粥里有勺糖',
+//   baseUrl,
+//   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
+//   description: '你的指尖,拥有改变世界的力量（大前端相关技术分享）',
+//   language: 'zh-cn',
+//   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
+//   favicon: 'https://hykids.github.io/blog/favicon.ico'
+// };
 
 // 所有配置项，详见文档: https://theme.sugarat.top/
 const blogTheme = getThemeConfig({

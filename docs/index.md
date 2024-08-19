@@ -3,7 +3,7 @@ layout: home
 # 首页部分元素定制
 blog:
   name: 'Lionsmith'
-  motto: A vagabond living for nothing
+  motto: ✨A vagabond living for nothing✨
   inspiring:
     - Per aspera ad astra
     - 此处通往繁星

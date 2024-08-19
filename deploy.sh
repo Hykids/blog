@@ -24,8 +24,8 @@ git push -f https://github.com/Hykids/blog.git dev:gh-pages
 
 cd 
 # Add and commit local changes
-git add .
-git commit -m "build:committing local changes after deployment"
+# git add .
+# git commit -m "build:committing local changes after deployment"
 
-# Push local changes to the dev branch
-git push origin dev
+# # Push local changes to the dev branch
+# git push origin dev

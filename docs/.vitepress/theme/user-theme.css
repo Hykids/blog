@@ -14,7 +14,7 @@ html[theme] {
   --vp-c-user-3: #26ccff;
   --vp-c-text: #a15000;
   --vp-c-user-soft: #ed7c0c;
-  --vp-c-bg: #faf6f1;
+  --vp-c-bg: #faf6f2;
 }
 
 /* 深色模式使用的变量 */
@@ -35,5 +35,4 @@ html[theme].dark {
   --vp-c-brand-3: var(--vp-c-user-3);
   --vp-c-brand-soft: var(--vp-c-user-soft);
   --vp-c-text: var(--vp-c-text);
-  --vp-c-bg: var(--vp-c-bg);
 }
