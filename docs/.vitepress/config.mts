@@ -53,6 +53,7 @@ export default defineConfig({
         icon: 'github',
         link: 'https://github.com/Hykids'
       },
+      { icon: 'twitter', link: 'https://x.com/_Hykids_' },
       {
         icon: {
           svg: `<svg role="img" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20">

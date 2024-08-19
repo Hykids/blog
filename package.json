@@ -20,6 +20,7 @@
     "doc": "docs"
   },
   "devDependencies": {
+    "cz-customizable": "^7.2.1",
     "pagefind": "^1.1.0",
     "sass": "^1.76.0",
     "typescript": "^5.4.5",
@@ -31,6 +32,11 @@
         "@algolia/client-search",
         "search-insights"
       ]
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
     }
   }
 }

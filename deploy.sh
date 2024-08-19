@@ -20,6 +20,12 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/Hykids/blog.git main:gh-pages
+git push -f https://github.com/Hykids/blog.git dev:gh-pages
 
 cd 
+# Add and commit local changes
+git add .
+git commit -m "Committing local changes after deployment"
+
+# Push local changes to the dev branch
+git push origin dev

@@ -1,32 +1,20 @@
 /* 所有变量：https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css */
 /* 自定义主题色示例，如下 */
 :root {
-  --vp-c-brand: #a27b5c;
-  --vp-c-brand-light: #a27b5c;
-  --vp-c-brand-dark: #a27b5c;
-  --vp-c-hover: #212121;
-  --vp-c-bg: #faf6f1;
-  --vp-c-bg-alpha-with-backdrop: rgba(250, 246, 241, 0.7);
-
-  --vp-c-color-b: #26ccff;
-  --vp-c-color-c: #0cb9ed;
-  --vp-c-color-d: #a15000;
-  --vp-c-color-e: #ed7c0c;
-}
-.dark {
-  --vp-c-bg: #2c3639;
-  --vp-c-text: yellow;
-  --vp-c-hover: #ffffff;
-  --vp-c-bg-alpha-with-backdrop: rgba(44, 54, 57, 0.7);
-  --vp-avator-border: #3f4e4f;
+  --vp-font-family-base: 'LXGW WenKai Lite', 'Inter var experimental', 'Inter var', -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  --vp-font-family-mono: 'LXGW WenKai Mono Lite', ui-monospace, SFMono-Regular, 'SF Mono', Menlo,
+    Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
-/* 浅色模式使用的变量 */
 html[theme] {
-  --vp-c-user-1: #6482ad;
-  --vp-c-user-2: #7fa1c3;
-  --vp-c-user-3: #e2dad6;
-  --vp-c-user-soft: #f5eded;
+  --vp-c-user-1: #799351;
+  --vp-c-user-2: #a1dd70;
+  --vp-c-user-3: #26ccff;
+  --vp-c-text: #a15000;
+  --vp-c-user-soft: #ed7c0c;
+  --vp-c-bg: #faf6f1;
 }
 
 /* 深色模式使用的变量 */
@@ -34,7 +22,9 @@ html[theme].dark {
   --vp-c-user-1: yellow;
   --vp-c-user-2: purple;
   --vp-c-user-3: orange;
+  --vp-c-text: #26ccff;
   --vp-c-user-soft: rgba(255, 255, 0, 0.5);
+  --vp-c-bg: #2c3639;
 }
 
 /* 覆盖默认变量 */
@@ -44,4 +34,6 @@ html[theme].dark {
   --vp-c-brand-2: var(--vp-c-user-2);
   --vp-c-brand-3: var(--vp-c-user-3);
   --vp-c-brand-soft: var(--vp-c-user-soft);
+  --vp-c-text: var(--vp-c-text);
+  --vp-c-bg: var(--vp-c-bg);
 }

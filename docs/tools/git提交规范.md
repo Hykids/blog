@@ -49,7 +49,7 @@ commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact
 
 上述命令会添加 commitizen 到 package.json devDependencies 依赖中，同时添加配置 config 到 package.json 根目录。
 
-```
+```JSON
  "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
@@ -97,6 +97,10 @@ npm i husky --save-dev
 
 定制 Commitizen 的提交规范。Commitizen 默认遵循 Conventional Commits 规范，可自定义 Commitizen 的提示内容和选项。
 
+效果展示：
+
+![image-20240819100045993](/Users/peepocry/Desktop/blog/docs/tools/assets/image-20240819100045993.png)
+
 ### [cz-customizable](https://github.com/leoforfree/cz-customizable)
 
 Commitizen 插件,定制 commit 信息,可自定义提交模式
@@ -116,8 +120,8 @@ npm install cz-customizable --save-dev
 
 ```JSON
 commitizen init cz-customizable --save --save-exact
-
-// 在package.json文件中增加相关配置
+// 运行后效果如下
+// 会在package.json文件中增加相关配置
 "config": {
   "commitizen": {
     "path": "./node_modules/cz-customizable"
