@@ -16,8 +16,8 @@ export default defineConfig({
   extends: blogTheme,
   base,
   lang: 'zh-cn',
-  title: '@Lionsmith|Blog',
-  description: '记录个人日志',
+  title: 'Lionsmith',
+  description: 'Progress & Process',
   lastUpdated: true,
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [

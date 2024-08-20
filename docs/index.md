@@ -2,7 +2,7 @@
 layout: home
 # 首页部分元素定制
 blog:
-  name: 'Lionsmith'
+  name: 'Waves of Thought'
   motto: ✨A vagabond living for nothing✨
   inspiring:
     - Per aspera ad astra

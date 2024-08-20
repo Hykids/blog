@@ -36,13 +36,13 @@ sidebar: false
 
 全局安装
 
-```
+```shell
 npm install commitizen -g
 ```
 
 项目引入
 
-```
+```shell
 npm install commitizen --save-dev
 commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact
 ```
@@ -61,7 +61,7 @@ commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact
 
 ```JavaScript
 module.exports = {
-	extends: ['@commitlint/config-conventional'],
+	extends: ['@commitlint/config-conventional'], // [!code hl]
 	rules: { // type 类型定义
 	'type-enum': [2, 'always', [
 		"feat", // 新功能 feature
