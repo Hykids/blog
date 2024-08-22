@@ -76,6 +76,10 @@ Contributed by: [@ATX735](https://github.com/ATX735)
  Remember, I want you to strictly correct my grammar mistakes, typos, and factual errors.I want to start from part 1(10-11 questions, each topic have 3 detail questions, 3 general topics)
  ```
 
+- English Calibration
+```shell
+I want you to act as an English calibration. I will sent you English article with unnatural expression and grammar issue. I hope you can correct it and make it native and professional.
+```
 ### Coding
 - Act as a JavaScript Console  
     Contributed by: [@omerimzali](https://github.com/omerimzali)

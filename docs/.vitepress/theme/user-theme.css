@@ -13,15 +13,15 @@ html[theme] {
   --vp-c-user-2: #a1dd70;
   --vp-c-user-3: #26ccff;
   --vp-c-text: #a15000;
-  --vp-c-user-soft: #ed7c0c;
+  --vp-c-user-soft: #d4dccd;
   --vp-c-bg: #faf6f2;
 }
 
 /* 深色模式使用的变量 */
 html[theme].dark {
   --vp-c-user-1: yellow;
-  --vp-c-user-2: purple;
-  --vp-c-user-3: orange;
+  --vp-c-user-2: orange;
+  --vp-c-user-3: purple;
   --vp-c-text: #26ccff;
   --vp-c-user-soft: rgba(255, 255, 0, 0.5);
   --vp-c-bg: #2c3639;

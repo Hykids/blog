@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-
+import mathjax3 from "markdown-it-mathjax3";
 // 导入主题的配置
 import { blogTheme } from './blog-theme';
 
@@ -62,7 +62,13 @@ export default defineConfig({
         link: 'cya1532x@gmail.com'
       }
     ]
-  }
+  },
+  markdown: {
+      theme: {
+        light: "vitesse-light",
+        dark: "vitesse-dark",
+      }
+    },
 });
 plugins: [
   //. omitted

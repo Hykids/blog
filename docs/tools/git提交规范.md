@@ -190,3 +190,4 @@ npm i conventional-changelog-cli --save-dev
 
 [超详细的 Git 提交规范引入指南](ttps://juejin.cn/post/6844903793033756680)  
 [阮一峰 - Commit message 和 Change log 编写指南](https://ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+[git commit 规范校验配置和版本发布配置](https://juejin.cn/post/6844903857718312967#heading-6)
