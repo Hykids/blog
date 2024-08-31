@@ -99,7 +99,7 @@ npm i husky --save-dev
 
 效果展示：
 
-![image-20240819100045993](/Users/peepocry/Desktop/blog/docs/tools/assets/image-20240819100045993.png)
+![image-20240819100045993](./assets/image-20240819100045993.png)
 
 ### [cz-customizable](https://github.com/leoforfree/cz-customizable)
 

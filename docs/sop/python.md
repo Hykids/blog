@@ -5,11 +5,30 @@ tag:
   - python
 ---
 
-# python 基本类型
+# python 初学者日志
 
-## String
+## 基本类型
 
-创建
+## 标准库
+### os 模块
+
+- 作用: os 模块提供了一些与操作系统进行交互的函数，比如文件和目录的操作、路径处理、环境变量访问等。
+- 常用功能:
+- 文件和目录操作: 创建、删除、遍历目录，检查文件是否存在等。
+- 例如：os.listdir() 可以列出指定目录下的所有文件和文件夹。
+- 路径操作: 处理文件路径，比如拼接、分割路径，获取文件扩展名等。
+- 例如：os.path.join() 用来拼接文件路径，os.path.splitext() 用来分割文件名和扩展名。
+- 环境变量: 获取或设置操作系统的环境变量。
+- 例如：os.getenv("HOME") 可以获取当前用户的主目录。
+
+### sys 模块
+- 作用: sys 模块提供了一些与 Python 解释器和系统环境相关的函数和变量，比如获取命令行参数、退出程序、修改路径等。
+- 常用功能:
+- 命令行参数: sys.argv 用来获取命令行传递给 Python 脚本的参数。sys.argv 是一个列表，其中 sys.argv[0] 是脚本名，后续元素是传递的参数。
+- 退出程序: sys.exit() 可以用来退出 Python 程序，并可以返回一个退出状态码。
+- 模块路径: sys.path 是一个列表，包含了解释器查找模块的路径。可以动态修改 sys.path 来加载不同位置的模块。
+- 标准输入输出: sys.stdin, sys.stdout, sys.stderr 分别代表标准输入、输出和错误输出流，可以重定向这些流。
+
 
 ## 项目推荐
-(python 30 days)[https://github.com/Asabeneh/30-Days-Of-Python]
+[python 30 days](https://github.com/Asabeneh/30-Days-Of-Python)
