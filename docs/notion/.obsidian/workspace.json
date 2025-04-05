@@ -1,0 +1,179 @@
+{
+  "main": {
+    "id": "578d085e9685bd15",
+    "type": "split",
+    "children": [
+      {
+        "id": "c79286d5e631c650",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8423d7004307327b",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "578eb3ffec69708a",
+    "type": "split",
+    "children": [
+      {
+        "id": "38f838b7d51bc6b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4a70f6f79e35d2fe",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e1622edf1b7b657d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9ad3c0ba2f48c0e4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d68ba1dfa8682bd9",
+    "type": "split",
+    "children": [
+      {
+        "id": "b27a5213e9297420",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d9aea332f410169c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Writing Pactice.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Writing Pactice"
+            }
+          },
+          {
+            "id": "c7f3d0b74899034a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "672e3327e6fbae2a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a056b42115c4f9ae",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Writing Pactice.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Writing Pactice"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "8423d7004307327b",
+  "lastOpenFiles": [
+    "JavaScript 基础.md",
+    "排序.md",
+    "Untitled.canvas",
+    "Writing Pactice.md",
+    "Pasted image 20250325163400.png",
+    "Pasted image 20250309124449.png",
+    "dreaming/2025-03-08.md",
+    "dreaming",
+    "Welcome.md"
+  ]
+}

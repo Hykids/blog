@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工休统计与结算页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>工休统计与结算页面</h1>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="搜索姓名...">
+        <button id="sortButton">按部门排序</button>
+        <button id="addMonthButton">新增月份</button>
+    </div>
+
+    <div class="table-container">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>部门</th>
+                    <th>1月工休</th>
+                    <th>2月工休</th>
+                    <th>3月工休</th>
+                    <th>请假次数</th>
+                    <th>加班小时</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td contenteditable="true">张三</td>
+                    <td contenteditable="true">技术部</td>
+                    <td contenteditable="true">5</td>
+                    <td contenteditable="true">4</td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">10</td>
+                    <td><button class="calculateBtn">结算</button></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true">李四</td>
+                    <td contenteditable="true">市场部</td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">4</td>
+                    <td contenteditable="true">8</td>
+                    <td><button class="calculateBtn">结算</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#tableBody tr');
+
+            rows.forEach(row => {
+                const nameCell = row.querySelector('td');
+                if (nameCell && nameCell.textContent.toLowerCase().includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('sortButton').addEventListener('click', function () {
+            const rows = Array.from(document.querySelectorAll('#tableBody tr'));
+            rows.sort((a, b) => {
+                const departmentA = a.cells[1].textContent;
+                const departmentB = b.cells[1].textContent;
+                return departmentA.localeCompare(departmentB, 'zh-CN');
+            });
+
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            rows.forEach(row => tableBody.appendChild(row));
+        });
+
+        document.getElementById('addMonthButton').addEventListener('click', function () {
+            const monthCount = document.querySelectorAll('thead th').length - 3; // 已有月份数
+            const newMonth = `${monthCount + 1}月工休`;
+
+            // 添加表头新列
+            const headerRow = document.querySelector('thead tr');
+            const newHeader = document.createElement('th');
+            newHeader.textContent = newMonth;
+            headerRow.insertBefore(newHeader, headerRow.children[headerRow.children.length - 2]);
+
+            // 添加每一行的新列
+            const rows = document.querySelectorAll('#tableBody tr');
+            rows.forEach(row => {
+                const newCell = document.createElement('td');
+                newCell.contentEditable = 'true';
+                newCell.textContent = '0';
+                row.insertBefore(newCell, row.children[row.children.length - 2]);
+            });
+        });
+
+        document.querySelectorAll('.calculateBtn').forEach(button => {
+            button.addEventListener('click', function () {
+                const row = button.parentElement.parentElement;
+                const monthCells = Array.from(row.querySelectorAll('td:nth-child(n+3):nth-last-child(n+3)'));
+                const totalRest = monthCells.reduce((sum, cell) => sum + (parseFloat(cell.textContent) || 0), 0);
+
+                document.getElementById('result').textContent = `【${row.cells[0].textContent}】的总工休剩余为：${totalRest} 小时`;
+            });
+        });
+    </script>
+</body>
+</html>
