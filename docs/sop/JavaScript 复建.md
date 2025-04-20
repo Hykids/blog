@@ -19,11 +19,164 @@ tag:
 
 ### 新特性
 
-1. 新增块级作用域(const let)
+1. 新增块级作用域(const, let)
+
+   var 存在变量提升，可以在声明前调用，值为undefined； 可多次重复声明，后者覆盖前者。
+
+   let，const不存在变量提升，如果在声明之前调用会抛出异常。
+
+   存在暂时性死区：
+
+   ````js
+   // 示例1：典型的TDZ
+   console.log(x); // ReferenceError: Cannot access 'x' before initialization
+   let x = 5;
+   
+   // 示例2：函数内的TDZ
+   function test() {
+       console.log(a); // ReferenceError
+       let a = 10;
+   }
+   
+   // 示例3：块级作用域TDZ
+   {
+       console.log(b); // ReferenceError
+       const b = 20;
+   }
+   ````
+
+   不能在同一个作用域重复声明。
+
 2. 新增定义类的语法糖(class)
 3. 新增一种基本数据类型(symbol)
 4. 新增解构赋值
 5. 新增函数参数的默认值
+6. 数组新增api
+7. Promise
+
+​	将异步操作队列话，解决回调地狱。自身的方法有：Reject, Resolve,all,race；原型上的方法：then, catch。
+
+​	三种状态：pending：等待; rejected：操作失败；fulfilled: 成功。
+
+​	详见下文
+
+8. 对象和数组新增扩展运算符
+9. 新增模块化(import 和export)
+10. 新增了map和set数据结构
+11. 新增generator
+12. 新增箭头函数
+    - 不能作为构造函数，没有原型，不能用new关键字
+    - 无arguments
+    - 不能使用apply, call, bind
+    - this 指向外层第一个this
+
+
+
+## 对象
+
+创建对象的方法
+
+字面变量创建
+
+````
+
+````
+
+
+
+## 引用类型
+
+### 深拷贝
+
+完全拷贝一个对象。会在堆内存中开辟一个新的空间。拷贝的对象修改后不会影响原来的对象。主要针对引用数据类型。
+
+方法有以下几种
+
+1. 扩展运算符：可以实现浅层拷贝，对于嵌套对象则仍然是浅拷贝
+
+   ````javascript
+   const original = { a: 1, b: { c: 2 } };
+   const copy = { ...original };
+   
+   // 修改第一层属性不会影响原对象
+   copy.a = 10;
+   console.log(original.a); // 1 (未改变)
+   
+   // 修改嵌套对象会影响原对象
+   copy.b.c = 20;
+   console.log(original.b.c); // 20 (被改变了)
+   ````
+
+2. JSON.parse(JSON.stringify())
+
+   - 不能拷贝函数、Symbol、undefined 等特殊类型
+   - 会丢失对象的原型链
+   - 不能处理循环引用
+
+3. 利用递归手动实现：
+
+   ````js
+   function deepClone(obj, hash = new WeakMap()) {
+     if (obj === null || typeof obj !== 'object') {
+       return obj;
+     }
+     
+     // 处理循环引用
+     if (hash.has(obj)) {
+       return hash.get(obj);
+     }
+     
+     let clone = Array.isArray(obj) ? [] : {};
+     hash.set(obj, clone);
+     
+     // 拷贝Symbol属性
+     const symKeys = Object.getOwnPropertySymbols(obj);
+     if (symKeys.length) {
+       symKeys.forEach(symKey => {
+         clone[symKey] = deepClone(obj[symKey], hash);
+       });
+     }
+     
+     // 拷贝普通属性
+     for (let key in obj) {
+       if (obj.hasOwnProperty(key)) {
+         clone[key] = deepClone(obj[key], hash);
+       }
+     }
+     
+     return clone;
+   }
+   
+   // 使用示例
+   const original = { a: 1, b: { c: 2 } };
+   const copy = deepClone(original);
+   ````
+
+   
+
+````javascript
+function deepClone(obj, cache = new WeakMap()){
+  if(obj == 'null' || typeof obj !== 'object') return obj
+  
+  if(obj instanceof Date) return new Date(obj)
+  
+  if(obj instanceof RegExp) return new RegExp(obj)
+  
+  // 避免循环调用
+  if(cache.has(obj)) return cache.get(obj)
+  
+  let clone = Array.isArray(obj)?[]:{}
+  
+  for(let key in obj){
+    if(obj.hasOwnProperty(key))
+      clone[key]=deepClone(obj[key],cache)
+	}
+  
+  reuturn obj
+}
+````
+
+
 
 ## 函数
 
@@ -202,6 +355,43 @@ let functionName = function(agr1, agr2){
 
 函数在背调用时自动创建两个变量：this he 
 
+#### 节流和防抖
+
+````js
+// 只有最后一次调用生效
+function debounce(fn, delay) {
+  let timer = null;
+
+  return function (...args) {
+
+    clearTimeout(timer); // 先清除之前的定时器
+    timer = setTimeout(() => {
+      fn.apply(this, args); // 保持 this 不变
+    }, delay);
+  };
+}
+
+// 隔段时间只触发一次
+function throttle(fn, delay) {
+  // 上一次执行 fn 的时间（初始为 0）
+  let lastTime = 0;
+
+  // 返回一个新的函数，用于节流执行 fn
+  return function (...arg) {
+    // 获取当前时间
+    let now = new Date();
+
+    // 如果距离上一次执行超过了 delay 毫秒，就执行
+    if (now - lastTime >= delay) {
+      fn.apply(this, arg); // 保留原本的 this 和参数
+      lastTime = now;      // 更新 lastTime 为当前时间
+    }
+  };
+}
+````
+
+
+
 ### this指向
 
 this是普通函数的自有变量，指向堆中的某种属性
@@ -226,6 +416,32 @@ this是普通函数的自有变量，指向堆中的某种属性
 3. 作为对象方法调用
 
 4. undefined
+
+#### 手撕apply call bind
+
+````javascript
+//apply
+function.prototype.myApply = function(context){
+    // 如果上下文是null 或者 undefined 自动指向全局
+    context = context || window
+
+    /**
+     * cnotext 在手写 apply / call 时我们传进来的对象
+     * 生成唯一下标 防止命名冲突
+     *  */ 
+    fnSymbol = Symbol()
+    context[fnSymbol] = this // 让函数的 this 指向这个对象
+
+    const result = arg?context[fnSymbol](...arg):context[fnSymbol]()
+
+    delete context[fnSymbol]
+
+    return result
+
+}
+````
+
+
 
 ## 继承与原型
 
@@ -385,6 +601,51 @@ new操作符具体做了什么？
 使用原型链继承的好处：所有实例共享原型上的方法，节省内存。
 
 <!-- ![IMG_5020](/Users/lionsmith/blog/docs/sop/assets/IMG_5020.png) -->
+
+## 异步
+
+在早期的javascript，只支持定义回调函数来表名异步操作。串联多个回调函数，往往造成回调地狱。
+
+````js
+function fn(){
+	seiTimeout(()=>setTimeout(console.log, 0, value*2),1000)
+}
+
+fn(3)
+````
+
+### promise
+
+
+
+Promise是抽象异步处理对象以及对其进行各种操作的组件。在ES6被引入。
+
+模拟promise的实现
+
+````js
+class myPromise{
+	constructor(executor){
+		this.state = 'pending'
+    this.value = undefined
+    this.error = undefined
+
+    this.onFulfilledList = []
+    this.onRejectedList = []
+	}
+  
+  const resolve = ()=>{
+    if (this.state == 'pending')
+    	this.state = 'fulfilled'
+    	this.onFulfilledList
+  }
+  
+  then(resolved, rejected){
+    if(this.state == 'fulfilled')
+  }
+}
+````
+
+Async 和await
 
 ## DOM
 
