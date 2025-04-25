@@ -5,7 +5,6 @@ readingTime: false
 hidden: true
 tag:
   - 配置
-recommend: 3
 ---
 
 # 样式配置

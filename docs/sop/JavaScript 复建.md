@@ -4,13 +4,13 @@ title: js极速版
 readingTime: false
 # publish: false
 tag:
-  - JavaScript
+  - 面试
 ---
 # js极速版
-::: info
-    修考失败
-    回来继续当牛马
-    落泪
+::: tip
+    修考未果，
+    归来仍是牛马，
+    一滴泪落
 :::
 
 ## ES5和ES6的区别
@@ -115,44 +115,6 @@ tag:
 
 3. 利用递归手动实现：
 
-   ````js
-   function deepClone(obj, hash = new WeakMap()) {
-     if (obj === null || typeof obj !== 'object') {
-       return obj;
-     }
-     
-     // 处理循环引用
-     if (hash.has(obj)) {
-       return hash.get(obj);
-     }
-     
-     let clone = Array.isArray(obj) ? [] : {};
-     hash.set(obj, clone);
-     
-     // 拷贝Symbol属性
-     const symKeys = Object.getOwnPropertySymbols(obj);
-     if (symKeys.length) {
-       symKeys.forEach(symKey => {
-         clone[symKey] = deepClone(obj[symKey], hash);
-       });
-     }
-     
-     // 拷贝普通属性
-     for (let key in obj) {
-       if (obj.hasOwnProperty(key)) {
-         clone[key] = deepClone(obj[key], hash);
-       }
-     }
-     
-     return clone;
-   }
-   
-   // 使用示例
-   const original = { a: 1, b: { c: 2 } };
-   const copy = deepClone(original);
-   ````
-
-   
 
 ````javascript
 function deepClone(obj, cache = new WeakMap()){
@@ -174,6 +136,95 @@ function deepClone(obj, cache = new WeakMap()){
   
   reuturn obj
 }
+````
+
+### 判断对象属于哪个类
+
+`typeof` 判断原始类型和function
+
+````js
+typeof "1"; // "string"
+typeof 1; // "number"
+typeof true; // "boolean"
+typeof null; // "object"
+typeof undefined; // "undefined"
+typeof 11n; // "bigint"
+typeof Symbol(); // "symbol"
+typeof function() {}; // "function"
+typeof {}; // "object"
+typeof []; // "object"
+````
+
+
+
+`instanceof` 判断引用类型，无法判断原始类型。检测构造函数是否出现在某个实例对象的原型链上，但原始类型（像 '123'、42、true）**没有原型链**，它们不是对象，所以无法用instanceOf 判断。
+
+````js
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+const auto = new Car('Honda', 'Accord', 1998);
+
+console.log(auto instanceof Car); // true
+
+console.log(auto instanceof Object); // true
+
+// 不能判断原始类型
+'123' instanceof String  // false ❌
+````
+
+模拟instanceOf实现
+
+````js
+function muInstanceOf(objA,objB){
+		objB = obj.prototype //获取b的原型对象
+		
+		let proto = Object.getPrototypeOf(objA)
+		
+    // 顺着原型链一直找下去
+		while(proto != null){
+			if(proto === objB) return true
+			proto = Object.getPrototypeOf(proto)
+		}
+  
+  return false
+}
+````
+
+`Object.prototype.constructor()` 返回构造函数，此属性值是对函数的引用。
+
+````js
+const o = {}
+o.constructor === Object // true
+
+const o = new Object
+o.constructor === Object // true
+
+const a = []
+a.constructor === Array // true
+
+const a = new Array
+a.constructor === Array // true
+
+const n = new Number(3)
+n.constructor === Number // true
+````
+
+`Object.protorype.toString().call()` toString 返回一个表示对象的字符串，可以用于检查对象类。
+
+````js
+const toString = Object.prototype.toString;
+
+toString.call(new Date()); // [object Date]
+toString.call(new String()); // [object String]
+// Math has its Symbol.toStringTag
+toString.call(Math); // [object Math]
+
+toString.call(undefined); // [object Undefined]
+toString.call(null); // [object Null]
+
 ````
 
 
@@ -349,11 +400,17 @@ let functionName = function(agr1, agr2){
 
 闭包（closure）指的是引用了另一个函数中变量的函数。通常在嵌套函数中实现。
 
+**JavaScript 执行上下文**：
 
+当一段 JavaScript 代码在运行的时候，它实际上是运行在执行上下文中。下面 3 种类型的代码会创建一个新的执行上下文：
+
+- 全局执行上下文：只有一个，为存在于 JavaScript 函数之外的任何代码而创建，浏览器中的全局对象就是 `window` 对象。
+- 函数执行上下文：存在无数个，函数调用时创建。这个上下文就是通常说的“本地上下文”。
+- `eval` 函数： 指的是运行在 `eval` 函数中的代码，很少用而且不建议使用。
 
 在调用一个函数的时候，会为函数调用创建一个执行上下文，并创建执行作用域链。
 
-函数在背调用时自动创建两个变量：this he 
+**在函数外部访问函数内部的变量**，并**持久化这个作用域**。
 
 #### 节流和防抖
 
@@ -440,6 +497,78 @@ function.prototype.myApply = function(context){
 
 }
 ````
+
+### 立即调用IIFE
+
+立即调用函数是一个在**定义的时候**就会执行的函数
+
+````javascript
+(function(){
+	// statement
+})();
+````
+
+IIFE 会立即执行并**生成一个私有作用域**，这个作用域不会泄漏到外部，可以实现私有数据。
+
+````js
+(function () {
+    var secret = "我藏起来了";
+})();
+console.log(secret); // ❌ 报错：secret is not defined
+````
+
+
+
+将IIFE函数分配给一个变量，不是存储IIFE本身，而是存储IIFE执行后返回的结果。
+
+````javascript
+var result = (function(){
+	return 'oi'
+})();
+
+console.log(result) // oi
+````
+
+使用场景：
+
+经典面试题， 闭包 + 异步执行（setTimeout）。由于var是函数作用域，每次循环不会创建新的i，setTimeout是异步执行，它的回调函数会在同步代码执行之后执行，所有的 setTimeout 回调函数**共享同一个 i**，当它们在 1000ms 后执行时，看到的都是 i = 3。
+
+````javascript
+for (var i = 0; i < 3; i++) {
+  setTimeout(function(){
+    console.log(i); 
+  }, 1000);
+} // 3 3 3
+````
+
+如果想要输出变成  0 1 2，可以使用IIFE函数：
+
+````javascript
+for (var i = 0; i < 3; i++) {
+	(function(j){
+			setTimeout(function(){
+				console.log(i);
+			},1000)
+	}(i)) // 每次传入的i
+}
+
+// 等价于
+var i = 0;
+// 执行：
+(function(j){ setTimeout(() => console.log(j), 1000); })(0);
+
+i = 1;
+// 执行：
+(function(j){ setTimeout(() => console.log(j), 1000); })(1);
+
+i = 2;
+// 执行：
+(function(j){ setTimeout(() => console.log(j), 1000); })(2);
+````
+
+
+
+
 
 
 
@@ -616,8 +745,6 @@ fn(3)
 
 ### promise
 
-
-
 Promise是抽象异步处理对象以及对其进行各种操作的组件。在ES6被引入。
 
 模拟promise的实现
@@ -645,7 +772,70 @@ class myPromise{
 }
 ````
 
-Async 和await
+手撕promise.all
+
+````js
+promise.all = funtion(promises){
+  	// 判断是否是可迭代对象
+    if(typeof promise[Symbol.iterator]!='function')
+        return reject(new TypeError('not iterator obj'))
+
+    let res = []
+    let count = 0
+
+    const promiseLists = Array.from(promise)
+
+    if(promiseLists.length == 0)
+        return reject([])
+
+    promiseLists.forEach((p,index)=>{
+        promise.resolve(p).then((val)=>{
+            res[index] = val
+            count++
+            if(count === promiseLists.length)
+                resolve(res)
+        })
+    }).catch(res=>{
+        reject(err)
+    })
+}
+````
+
+
+
+### Async 和Await
+
+ES7引入，promise的语法糖
+
+可通过promise+生成器模拟效果。 `async`关键字放在`function`前面，表达这个函数总是返回一个Promise，qi
+
+## 垃圾回收机制
+
+js的垃圾回收是自动进行的，不需要手动释放。它是内存生命周期的一部分
+
+判断对象是否可以被回收的核心依据：可达性（Reachability)
+
+垃圾回收器会以某些“根（root）”为起点，去找哪些对象还“活着”。
+
+这些根通常是：
+
+- 当前执行的函数中的变量
+- 全局变量（比如 window 上的属性）
+- 闭包中的变量
+- 函数参数 / 局部变量
+- DOM 中还引用着的对象
+
+只要某个对象能被这些根访问到（**直接或间接引用**），它就是“可达的”，不会被回收。
+
+最常见的回收算法是标记清理：
+
+这个算法流程如下：
+
+1. **标记所有活动对象（可达）**
+2. **清除所有没被标记的对象（不可达）**
+3. **释放它们所占用的内存**
+
+限制：循环引用
 
 ## DOM
 
@@ -663,3 +853,118 @@ Async 和await
 | **执行时机**     | 遇到脚本立即执行       | 加载完成后尽快执行         | DOMContentLoaded前执行          |
 | **是否阻塞解析** | 是                     | 可能阻塞                   | 不阻塞                          |
 | **适用场景**     | 极少使用               | 独立第三方脚本(如分析工具) | 需要DOM的脚本                   |
+
+## 发布订阅模式
+
+这一设计模式在js很多地方都有出现，比如浏览器监听。
+
+手写实现：
+
+````js
+class EventBus{
+    constructor(){
+        this.events = {}
+    }
+
+  // 订阅
+    on(event,callback){
+        if(!this.events[event]){
+            this.events[event] = []
+        }
+        this.events[event].push(callback)
+    }
+
+    off(event,callback){
+        if(!this.events[event]) return
+        this.events[event] = this.events[event].filter(fn =>fn !== callback)
+    }
+
+  // 发布
+    emit(event,...arg){
+        if(!this.events[event]) return
+        this.events[event].forEach(fn=>fn(...arg))
+    }
+}
+````
+
+## 代理和反射
+
+ECMScript 6新增的代理和反射，提供了拦截并向基本操作嵌入额外行为的能力。
+
+在代理上执行的任何操作，都会应用到到目标对象上。
+
+````js
+const target = {
+	id:'target'
+}
+
+const handler = {}
+
+const proxy = new Proxy(target,handler)
+
+// 访问的是同一个值
+console.log(proxy.id) //target
+console.log(target.id) //target
+````
+
+使用代理的目的是定义捕获器(trap)，也就是基本操作拦截器。当用代理对象调用某些基本操作的时候，代理会在操作之前先调用捕获函数，从而拦截修改相应的行为。
+
+````js
+const target = {
+	foo:'bar'
+}
+
+const handler = {
+  get(){
+    return 'trap'
+  }
+}
+
+const proxy = new Proxy(target,handler)
+
+console.log(proxy.foo) //trap
+console.log(target.foo) //bar
+````
+
+Get()捕获器会接收目标对象，要查询的属性和代理对象，基于这些参数可以重建被捕获方法的原始行为。但是有些捕获器远比get()要复杂，通过手动重建并不现实，于是可以通过调用全局Reflect对象上的同名方法来重建。
+
+Reflect 是 ES6 提供的一个内置对象，它提供了很多跟对象操作相关的方法，跟以前的 Object 方法类似，但更**统一、可控、安全**。
+
+详细一下，你是一个外卖员，要来小区里面送货，而Proxy对象则是一个保安，外卖员想进入小区，必须先进过保安。
+
+````js
+const house = new Proxy(obj, {
+  get(target, prop) {
+    console.log(`有人想访问 ${prop} 房间`)
+    return target[prop]
+  }
+})
+````
+
+每次外卖员出入小区，保安都会记录一笔。而Reflect，官方配的“万能钥匙工具箱”，能正确、安全地操作房间。
+
+````js
+const obj = {
+  name: 'Vue',
+  fridge: 'milk'
+}
+
+const proxy = new Proxy(obj, {
+  get(target, key) {
+    if (key === 'fridge') {
+      return '禁止访问冰箱 ❌'
+    }
+
+    // 这里就像是说：除了冰箱外，我啥都按原计划办
+    return Reflect.get(target, key)
+  }
+})
+````
+
+Reflect**就是用来“模拟原本没被 Proxy 拦截时的行为”**。它是**官方提供的标准方式**，用来访问对象属性。
+
+**为什么用 Reflect.get，而不是直接写 target[prop]？**
+
+1. **更安全**：Reflect 会考虑原型链、绑定 this 等复杂场景
+2. **可控返回值**：不会抛异常，失败会返回 false 或 undefined
+3. **统一操作方式**：所有操作都用 Reflect，风格一致

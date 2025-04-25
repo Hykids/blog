@@ -4,7 +4,6 @@ title: 📚 Latex快速入门
 readingTime: false
 tag:
   - Academic
-recommend: 3
 ---
 
 ## **📚 Latex 快速入门**
